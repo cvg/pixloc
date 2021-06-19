@@ -4,8 +4,9 @@ We introduce PixLoc, a neural network for end-to-end learning of camera localiza
 - [Back to the Feature: Learning Robust Camera Localization from Pixels to Pose](https://arxiv.org/abs/2103.09213)
 - to appear at CVPR 2021
 - Authors: [Paul-Edouard Sarlin](psarlin.com/)\*, [Ajaykumar Unagar](https://aunagar.github.io/)\*, [Måns Larsson](https://scholar.google.se/citations?user=RoOUjgQAAAAJ&hl=en), [Hugo Germain](https://www.hugogermain.com/), [Carl Toft](https://scholar.google.com/citations?user=vvgmWA0AAAAJ&hl=en), [Viktor Larsson](http://people.inf.ethz.ch/vlarsson/), [Marc Pollefeys](http://people.inf.ethz.ch/pomarc/), [Vincent Lepetit](http://imagine.enpc.fr/~lepetitv/), [Lars Hammarstrand](http://www.chalmers.se/en/staff/Pages/lars-hammarstrand.aspx), [Fredrik Kahl](http://www.maths.lth.se/matematiklth/personal/fredrik/), and [Torsten Sattler](https://scholar.google.com/citations?user=jzx6_ZIAAAAJ&hl=en)
+- Website: [psarlin.com/pixloc](https://psarlin.com/pixloc/) for videos, slides, recent updates, and more visualizations.
 
- This repository will host the training and inference code. Please subscribe to [this issue](https://github.com/cvg/pixloc/issues/1) if you wish to be notified of the code release.
+ This repository will host the training and inference code. Please subscribe to [this issue](https://github.com/cvg/pixloc/issues/1) if you wish to be notified of the code release. Current estimate: around 06/22/2021.
 
 <p align="center">
   <a href="https://arxiv.org/abs/2103.09213"><img src="doc/teaser.png" width="60%"/></a>
@@ -17,7 +18,7 @@ Camera pose estimation in known scenes is a 3D geometry task recently tackled by
 
 ## BibTex Citation
 
-Please consider citing our work if you use any of the ideas presented the paper or code from this repo:
+Please consider citing our work if you use any code from this repo or ideas presented in the paper:
 
 ```
 @inproceedings{sarlin21pixloc,
@@ -35,6 +36,5 @@ Please consider citing our work if you use any of the ideas presented the paper 
   title     = {{Back to the Feature}: Learning Robust Camera Localization from Pixels to Pose},
   booktitle = {CVPR},
   year      = {2021},
-  url       = {https://arxiv.org/abs/2103.09213}
 }
 ```
