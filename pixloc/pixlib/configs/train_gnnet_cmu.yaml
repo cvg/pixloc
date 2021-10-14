@@ -1,0 +1,53 @@
+data:
+  name: cmu
+  min_overlap: 0.3
+  max_overlap: 1.0
+  max_num_points3D: 512
+  force_num_points3D: true
+  max_baseline: 7.0
+  resize: 512
+  resize_by: min
+  crop: 512
+  optimal_crop: false
+  batch_size: 4
+  num_workers: 6
+  seed: 1
+model:
+  name: gnnet
+  extractor:
+    name: unet
+    encoder: vgg16
+    decoder: [64, 64, 64, 32]
+    output_scales: [0, 2, 4]
+    output_dim: [32, 128, 128]
+    freeze_batch_normalization: false
+    do_average_pooling: false
+    compute_uncertainty: false
+    checkpointed: true
+  optimizer:
+    num_iters: 15
+    pad: 3
+    lambda_: 0.01
+    verbose: false
+    loss_fn: scaled_barron(0, 0.1)
+    jacobi_scaling: false
+  normalize_features: true
+  loss:
+    margin_positive: 0.2
+    margin_negative: 1
+    num_top_negative_sampling: 200
+    gauss_newton_magnitude: 1.0
+    gauss_newton_weight: 0.1
+    contrastive_weight: 1
+train:
+  seed: 0
+  epochs: 200
+  log_every_iter: 50
+  eval_every_iter: 500
+  dataset_callback_fn: sample_new_items
+  lr: 1.0e-06
+  median_metrics:
+  - loss/reprojection_error
+  - loss/reprojection_error/init
+  - R_error
+  - t_error

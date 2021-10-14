@@ -1,0 +1,56 @@
+data:
+  name: megadepth
+  min_overlap: 0.4
+  max_overlap: 1.0
+  max_num_points3D: 512
+  force_num_points3D: true
+  resize_by: min
+  resize: 512
+  crop: 512
+  optimal_crop: false
+  init_pose: [0.75, 1.0]
+  train_num_per_scene: 150
+  val_num_per_scene: 8
+  batch_size: 6
+  num_workers: 8
+  seed: 1
+model:
+  name: two_view_refiner
+  success_thresh: 3
+  normalize_features: true
+  duplicate_optimizer_per_scale: true
+  extractor:
+    name: unet
+    encoder: vgg19
+    decoder: [64, 64, 64, 32]
+    output_scales: [0, 2, 4]
+    output_dim: [32, 128, 128]
+    freeze_batch_normalization: false
+    do_average_pooling: false
+    compute_uncertainty: true
+    checkpointed: true
+  optimizer:
+    name: learned_optimizer
+    num_iters: 15
+    pad: 2
+    lambda_: 0.01
+    verbose: false
+    loss_fn: scaled_barron(0, 0.1)
+    jacobi_scaling: false
+    learned_damping: true
+    damping:
+      type: constant
+train:
+  seed: 0
+  epochs: 200
+  log_every_iter: 50
+  eval_every_iter: 500
+  dataset_callback_fn: sample_new_items
+  lr: 5.0e-06
+  lr_scaling: [[100, ['dampingnet.const']]]
+  median_metrics:
+  - loss/reprojection_error
+  - loss/reprojection_error/init
+  - R_error
+  - t_error
+  clip_grad: 1.0
