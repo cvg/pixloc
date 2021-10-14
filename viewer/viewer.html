@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>PixLoc 2D-3D viewer</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./style.css">
+    <style>
+    .animContainer {
+      padding: 5px 5px 5px 5px;
+    }
+    </style>
+  </head>
+  <body>
+    <div class="viewer-row", id="viewer">
+      <div class="column pane3d">
+        <div class="threeCanvas" id="3dCanvas">
+        <div id="info">
+          Mouse left/middle/right to orbit/zoom/pan<br>
+          Press + or - to increase or decrease the point size<br>
+          Press [ or ] to increase or decrease the frustum size<br>
+          Press i and o to initialize and step through the optimization<br>
+          Press p to play or clear the animation<br>
+          Press r to start or stop the auto rotation<br>
+          Press h to hide this help
+        </div>
+        </div>
+      </div>
+      <div class="column pane2d" id="pane2d">
+        <div class="animContainer">
+          <canvas id="qCanvas">Could not load.</canvas>
+          <p>Query</p>
+        </div>
+        <div class="animContainer">
+          <canvas id="rCanvas">Could not load.</canvas>
+          <p>Reference</p>
+        </div>
+      </div>
+    </div>
+  <script type="module">
+    import { Viewer } from './viewer.js';
+    var viewer = new Viewer('./dumps/');
+  </script>
+  </body>
+</html>

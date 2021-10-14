@@ -1,0 +1,45 @@
+<link rel="stylesheet" href="{__path__}/style.css">
+<style>
+  .viewer-row {
+    height: {__height__} !important;
+  }
+  .pane2d {
+    max-width: 50% !important;
+  }
+  .animContainer > p {
+    font-size: 15px;
+    margin: 5px;
+  }
+</style>
+<div class="viewer-row", id="viewer">
+  <div class="column pane3d" id="pane3d">
+    <div class="threeCanvas" id="3dCanvas">
+    <div id="info">
+      Mouse left/middle/right to orbit/zoom/pan<br>
+      Press + or - to increase or decrease the point size<br>
+      Press [ or ] to increase or decrease the frustum size<br>
+      Press i and o to initialize and step through the optimization<br>
+      Press p to play or clear the animation<br>
+      Press r to start or stop the auto rotation<br>
+      Press h to hide this help
+    </div>
+    </div>
+  </div>
+  <div class="column pane2d" id="pane2d">
+    <div class="animContainer">
+      <canvas id="qCanvas">Could not load.</canvas>
+      <p>Query</p>
+    </div>
+    <div class="animContainer">
+      <canvas id="rCanvas">Could not load.</canvas>
+      <p>Reference</p>
+    </div>
+  </div>
+</div>
+<script type="module">
+  import { Viewer } from '{__path__}/viewer.js';
+  var viewer = new Viewer('{__assets__}/');
+
+  var container = document.getElementById("3dCanvas").getElementsByTagName('canvas')[0];
+  IPython.notebook.keyboard_manager.register_events(container);
+</script>
