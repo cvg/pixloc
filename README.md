@@ -75,7 +75,7 @@ The codebase can evaluate PixLoc on the following datasets: *7Scenes*, *Cambridg
 
 - The given dataset;
 - Sparse 3D Structure-from-Motion point clouds and results of the image retrieval, both generated with our toolbox [hloc](https://github.com/cvg/Hierarchical-Localization/) and hosted [here](https://cvg-data.inf.ethz.ch/pixloc_CVPR2021/);
-- Weights of the model trained on *CMU* or *MegaDepth*, hosted [here](https://cvg-data.inf.ethz.ch/pixloc_CVPR2021/weights/).
+- Weights of the model trained on *CMU* or *MegaDepth*, hosted [here](https://cvg-data.inf.ethz.ch/pixloc_CVPR2021/checkpoints/).
 
 We provide a convenient script to download all assets for one or multiple datasets using:
 
