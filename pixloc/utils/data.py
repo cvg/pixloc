@@ -42,8 +42,8 @@ class Paths:
     def fields(cls) -> List[str]:
         return [f.name for f in dataclasses.fields(cls)]
 
-    def add_prefixes(self, dataset: Path, dumps: Path, eval_dir: Path
-                     ) -> 'Paths':
+    def add_prefixes(self, dataset: Path, dumps: Path,
+                     eval_dir: Optional[Path] = Path('.')) -> 'Paths':
         paths = {}
         for attr in self.fields():
             val = getattr(self, attr)
