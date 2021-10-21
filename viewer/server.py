@@ -2,7 +2,7 @@ from pathlib import Path
 import argparse
 import http.server
 
-PORT = 8892
+PORT = 8000
 
 
 class HttpRequestHandler(http.server.SimpleHTTPRequestHandler):
