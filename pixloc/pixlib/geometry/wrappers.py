@@ -318,6 +318,7 @@ class Camera(TensorWrapper):
     def J_project(self, p3d: torch.Tensor):
         x, y, z = p3d[..., 0], p3d[..., 1], p3d[..., 2]
         zero = torch.zeros_like(z)
+        z = z.clamp(min=self.eps)
         J = torch.stack([
             1/z, zero, -x / z**2,
             zero, 1/z, -y / z**2], dim=-1)
