@@ -222,7 +222,7 @@ class Pose(TensorWrapper):
 
 
 class Camera(TensorWrapper):
-    eps = 1e-4
+    eps = 1e-3
 
     def __init__(self, data: torch.Tensor):
         assert data.shape[-1] in {6, 8, 10}
