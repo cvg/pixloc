@@ -7,7 +7,6 @@ from pathlib import Path
 import signal
 import shutil
 import re
-import os
 import copy
 from collections import defaultdict
 
@@ -147,12 +146,9 @@ def training(rank, conf, output_dir, args):
         logger.info(f'Training in distributed mode with {args.n_gpus} GPUs')
         assert torch.cuda.is_available()
         device = rank
-        lock = Path(os.getcwd(),
-                    f'distributed_lock_{os.getenv("LSB_JOBID", 0)}')
-        assert not Path(lock).exists(), lock
         torch.distributed.init_process_group(
                 backend='nccl', world_size=args.n_gpus, rank=device,
-                init_method='file://'+str(lock))
+                init_method='file://'+str(args.lock_file))
         torch.cuda.set_device(device)
 
         # adjust batch size and num of workers since these are per GPU
@@ -381,6 +377,9 @@ if __name__ == '__main__':
 
     if args.distributed:
         args.n_gpus = torch.cuda.device_count()
+        args.lock_file = output_dir / "distributed_lock"
+        if args.lock_file.exists():
+            args.lock_file.unlink()
         torch.multiprocessing.spawn(
             main_worker, nprocs=args.n_gpus,
             args=(conf, output_dir, args))
