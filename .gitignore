@@ -1,6 +1,7 @@
 ./datasets/
 ./outputs/
 *.mp4
+lsf*
 .DS_Store
 
 # Byte-compiled / optimized / DLL files
@@ -135,10 +136,3 @@ dmypy.json
 # vscode
 .vscode
 
-# trained models and logs
-/datasets/
-/experiments/
-logs/
-lsf*
-/s2dopt/models/checkpoints/
-/outputs/

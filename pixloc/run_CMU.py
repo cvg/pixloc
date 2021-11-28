@@ -108,6 +108,7 @@ def main():
     slices = parse_slice_arg(args.slices)
 
     all_results = []
+    logger.info('Will evaluate slices %s.', slices)
     for slice_ in slices:
         logger.info('Working on slice %s.', slice_)
         paths_slice = paths.interpolate(slice=slice_)

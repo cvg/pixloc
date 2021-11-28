@@ -180,7 +180,6 @@ def download_CMU(do_dataset=True, do_outputs=True, do_training=True,
         for i in slices:
             if i in TEST_SLICES_CMU:
                 out_path = out_dir / f'slice{i}/'
-                out_path.mkdir(exist_ok=True, parents=True)
                 if not out_path.exists():
                     download_from_url(url + f'slice{i}/', out_path)
 
