@@ -35,7 +35,7 @@ default_confs = {
             'do_pose_approximation': False,
         },
     },
-    'from_pose': {
+    'from_poses': {
         'experiment': experiment,
         'features': {},
         'optimizer': {
