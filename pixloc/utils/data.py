@@ -21,6 +21,7 @@ class Paths:
     results: Optional[Path] = None
     global_descriptors: Optional[Path] = None
     hloc_logs: Optional[Path] = None
+    log_path: Optional[Path] = None
     ground_truth: Optional[Path] = None
 
     def interpolate(self, **kwargs) -> 'Paths':
