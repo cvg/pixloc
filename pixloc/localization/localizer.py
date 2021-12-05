@@ -142,7 +142,7 @@ class PoseLocalizer(Localizer):
             self.conf.refinement)
 
         logger.info('Reading hloc logs...')
-        with open(paths.log_path, 'rb') as f:
+        with open(paths.hloc_logs, 'rb') as f:
             self.logs = pickle.load(f)['loc']
 
     def run_query(self, name: str, camera: Camera):

@@ -13,7 +13,7 @@ default_paths = Paths(
     query_list='slice{slice}/queries_with_intrinsics.txt',
     global_descriptors='slice{slice}/cmu-slice{slice}_tf-netvlad.h5',
     retrieval_pairs='slice{slice}/pairs-query-netvlad10.txt',
-    log_path='slice{slice}/CMU_hloc_superpoint+superglue_netvlad10.txt_logs.pkl',
+    hloc_logs='slice{slice}/CMU_hloc_superpoint+superglue_netvlad10.txt_logs.pkl',
     results='pixloc_CMU_slice{slice}.txt',
 )
 
