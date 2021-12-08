@@ -1,5 +1,5 @@
-./datasets/
-./outputs/
+datasets/
+outputs/
 *.mp4
 lsf*
 .DS_Store
