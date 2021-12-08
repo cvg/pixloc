@@ -35,7 +35,7 @@ default_confs = {
             'do_pose_approximation': True,
         },
     },
-    'from_pose': {
+    'from_poses': {
         'experiment': experiment,
         'features': {'preprocessing': {'resize': 1600}},
         'optimizer': {
