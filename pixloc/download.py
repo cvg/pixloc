@@ -70,7 +70,9 @@ def extract_zip(zippath: Path, extract_path: Optional[Path] = None,
         extract_path = zippath.parent
     logger.info('Extracting %s.', zippath)
     with zipfile.ZipFile(zippath, 'r') as z:
-        z.extractall(extract_path)
+        # For some reasons extracting Thumbs.db (a Windows file) can crash
+        names = [n for n in z.namelist() if Path(n).name != "Thumbs.db"]
+        z.extractall(extract_path, members=names)
     if remove:
         zippath.unlink()
     return zippath.parent / zippath.name
@@ -100,16 +102,16 @@ def download_7Scenes(do_dataset=True, do_outputs=True):
             extract_zip(out_path / f'{scene}.zip')
             for seq in (out_path / scene).glob('*.zip'):
                 extract_zip(seq)
+        zipfile = '7scenes_sfm_triangulated.zip'
+        download_from_google_drive(
+                '1cu6KUR7WHO7G4EO49Qi3HEKU6n_yYDjb', out_path / zipfile)
+        extract_zip(out_path / zipfile)
 
     if do_outputs:
         url = URLs['logs'] + '7Scenes/'
         out_path = settings.LOC_PATH / '7Scenes'
         logger.info('Downloading logs for the 7Scenes dataset...')
         download_from_url(url, out_path)
-        zipfile = '7scenes_sfm_triangulated.zip'
-        download_from_google_drive(
-                '1cu6KUR7WHO7G4EO49Qi3HEKU6n_yYDjb', out_path / zipfile)
-        extract_zip(out_path / zipfile)
 
 
 def download_Cambridge(do_dataset=True, do_outputs=True):
@@ -126,16 +128,16 @@ def download_Cambridge(do_dataset=True, do_outputs=True):
         for scene in scene2id:
             download_from_url(url + f'{scene2id[scene]}/{scene}.zip', out_path)
             extract_zip(out_path / f'{scene}.zip')
+        zipfile = 'CambridgeLandmarks_Colmap_Retriangulated_1024px.zip'
+        download_from_google_drive(
+                '1esqzZ1zEQlzZVic-H32V6kkZvc4NeS15', out_path / zipfile)
+        extract_zip(out_path / zipfile)
 
     if do_outputs:
         url = URLs['logs'] + 'Cambridge-Landmarks/'
         out_path = settings.LOC_PATH / 'Cambridge'
         logger.info('Downloading logs for the Cambridge Landmarks dataset...')
         download_from_url(url, out_path)
-        zipfile = 'CambridgeLandmarks_Colmap_Retriangulated_1024px.zip'
-        download_from_google_drive(
-                '1esqzZ1zEQlzZVic-H32V6kkZvc4NeS15', out_path / zipfile)
-        extract_zip(out_path / zipfile)
 
 
 def download_Aachen(do_dataset=True, do_outputs=True):

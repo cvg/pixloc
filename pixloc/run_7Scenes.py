@@ -9,7 +9,7 @@ from .utils.eval import evaluate
 default_paths = Paths(
     query_images='{scene}/',
     reference_images='{scene}/',
-    reference_sfm='{scene}/sfm_superpoint+superglue/',
+    reference_sfm='{scene}/sfm_superpoint+superglue+depth/',
     query_list='{scene}/query_list_with_intrinsics.txt',
     retrieval_pairs='7scenes_densevlad_retrieval/{scene}_top10.txt',
     ground_truth='7scenes_sfm_triangulated/{scene}/triangulated/',
