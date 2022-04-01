@@ -365,7 +365,7 @@ if __name__ == '__main__':
     parser.add_argument('--restore', action='store_true')
     parser.add_argument('--distributed', action='store_true')
     parser.add_argument('dotlist', nargs='*')
-    args = parser.parse_intermixed_args()
+    args = parser.parse_args()
 
     logger.info(f'Starting experiment {args.experiment}')
     output_dir = Path(TRAINING_PATH, args.experiment)

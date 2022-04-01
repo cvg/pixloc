@@ -101,7 +101,7 @@ def main():
     parser.add_argument('--slices', type=str,
                         help='a single number, an interval (e.g. 2-6), '
                         'or a Python-style list or int (e.g. [2, 3, 4]')
-    args = parser.parse_intermixed_args()
+    args = parser.parse_args()
 
     set_logging_debug(args.verbose)
     paths = parse_paths(args, default_paths)

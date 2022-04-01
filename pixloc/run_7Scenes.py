@@ -62,7 +62,7 @@ def main():
     parser = create_argparser('7Scenes')
     parser.add_argument('--scenes', default=SCENES, choices=SCENES, nargs='+')
     parser.add_argument('--eval_only', action='store_true')
-    args = parser.parse_intermixed_args()
+    args = parser.parse_args()
 
     set_logging_debug(args.verbose)
     paths = parse_paths(args, default_paths)

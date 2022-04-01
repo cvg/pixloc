@@ -56,7 +56,7 @@ default_confs = {
 
 def main():
     parser = create_argparser('Aachen')
-    args = parser.parse_intermixed_args()
+    args = parser.parse_args()
     set_logging_debug(args.verbose)
     paths = parse_paths(args, default_paths)
     conf = parse_conf(args, default_confs)
