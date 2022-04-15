@@ -84,7 +84,7 @@ def main():
     parser = create_argparser('RobotCar')
     parser.add_argument('--conditions', default=CONDITIONS, choices=CONDITIONS,
                         nargs='+')
-    args = parser.parse_intermixed_args()
+    args = parser.parse_args()
 
     set_logging_debug(args.verbose)
     paths = parse_paths(args, default_paths)
