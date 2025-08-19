@@ -1,5 +1,5 @@
 import logging
-from typing import Dict, List, Union, Any
+from typing import Dict, List, Union, Any, Optional
 from pathlib import Path
 from collections import defaultdict
 import numpy as np
@@ -56,11 +56,13 @@ def parse_retrieval(path: Path) -> Dict[str, List[str]]:
     return dict(retrieval)
 
 
-def load_hdf5(path: Path) -> Dict[str, Any]:
+def load_hdf5(path: Path, key: Optional[str] = None) -> Dict[str, Any]:
     with h5py.File(path, 'r') as hfile:
         data = {}
         def collect(_, obj):  # noqa
             if isinstance(obj, h5py.Dataset):
+                if key is not None and obj.name.split('/')[-1] != key:
+                    return
                 name = obj.parent.name.strip('/')
                 data[name] = obj.__array__()
         hfile.visititems(collect)

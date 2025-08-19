@@ -105,7 +105,8 @@ class RetrievalLocalizer(Localizer):
         super().__init__(paths, conf, device)
 
         if paths.global_descriptors is not None:
-            global_descriptors = load_hdf5(paths.global_descriptors)
+            global_descriptors = load_hdf5(
+                paths.global_descriptors, key='global_descriptor')
         else:
             global_descriptors = None
 
